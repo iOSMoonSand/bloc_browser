@@ -12,6 +12,7 @@
 		5EA576C11CEB86AF00FD95E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA576C01CEB86AF00FD95E8 /* ViewController.m */; };
 		5EA576C61CEB86AF00FD95E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA576C51CEB86AF00FD95E8 /* Assets.xcassets */; };
 		5EA576C91CEB86AF00FD95E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA576C71CEB86AF00FD95E8 /* LaunchScreen.storyboard */; };
+		5EC6B39B1CECEDA300AC3C95 /* AwesomeFloatingToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC6B39A1CECEDA300AC3C95 /* AwesomeFloatingToolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		5EA576C51CEB86AF00FD95E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EA576C81CEB86AF00FD95E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5EA576CA1CEB86AF00FD95E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EC6B3991CECEDA300AC3C95 /* AwesomeFloatingToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeFloatingToolbar.h; sourceTree = "<group>"; };
+		5EC6B39A1CECEDA300AC3C95 /* AwesomeFloatingToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeFloatingToolbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 				5EA576BD1CEB86AF00FD95E8 /* AppDelegate.m */,
 				5EA576BF1CEB86AF00FD95E8 /* ViewController.h */,
 				5EA576C01CEB86AF00FD95E8 /* ViewController.m */,
+				5EC6B3991CECEDA300AC3C95 /* AwesomeFloatingToolbar.h */,
+				5EC6B39A1CECEDA300AC3C95 /* AwesomeFloatingToolbar.m */,
 				5EA576C51CEB86AF00FD95E8 /* Assets.xcassets */,
 				5EA576C71CEB86AF00FD95E8 /* LaunchScreen.storyboard */,
 				5EA576CA1CEB86AF00FD95E8 /* Info.plist */,
@@ -148,6 +153,7 @@
 				5EA576C11CEB86AF00FD95E8 /* ViewController.m in Sources */,
 				5EA576BE1CEB86AF00FD95E8 /* AppDelegate.m in Sources */,
 				5EA576BB1CEB86AF00FD95E8 /* main.m in Sources */,
+				5EC6B39B1CECEDA300AC3C95 /* AwesomeFloatingToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +296,7 @@
 				5EA576CF1CEB86AF00FD95E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
