@@ -75,6 +75,17 @@
     
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+    
+    UIAlertController *welcomeMessage = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Hi there", @"Welcome Message")
+                                                                   message:@"If you think this is the coolest browser, click OK"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
+                                                       style:UIAlertActionStyleCancel handler:nil];
+    
+    [welcomeMessage addAction:okAction];
+    
+    [self presentViewController:welcomeMessage animated:YES completion:nil];
 }
 
 - (void) viewWillLayoutSubviews {
