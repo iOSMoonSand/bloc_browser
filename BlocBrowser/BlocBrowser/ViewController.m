@@ -36,7 +36,7 @@
     self.textField.returnKeyType = UIReturnKeyDone;
     self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.textField.placeholder = NSLocalizedString(@"Where to?", @"Placeholder text for web browser URL field");
+    self.textField.placeholder = NSLocalizedString(@"Where to? Or run a search :)", @"Placeholder text for web browser URL field or Google search");
     self.textField.backgroundColor = [UIColor colorWithWhite:220/255.0f alpha:1];
     self.textField.delegate = self;
     
@@ -104,19 +104,39 @@
 #pragma mark
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    
+    //string inputed by user gets stored in *URLString
     NSString *URLString = textField.text;
     
-    NSURL *URL = [NSURL URLWithString:URLString];
-    
-    if (!URL.scheme) {
-        // The user didn't type http: or https:
-        URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", URLString]];
-    }
-    
-    if (URL) {
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    //check if string has white spaces
+    NSRange whiteSpaceRange = [URLString rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (whiteSpaceRange.location != NSNotFound) {
+    //if white spaces exist, treat the input as a Google search
+        
+        //replace the string with white space with the following format: http://www.google.com/search?q=charlie+bit+my+finger replacing white spaces with + sign
+        NSString *searchQueryString = [URLString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+        
+        //create a URL out of the search query string
+        NSString *searchQueryURL = [NSString stringWithFormat:@"http://www.google.com/search?q=%@", searchQueryString];
+        
+        NSURL *searchQuery = [NSURL URLWithString: searchQueryURL];
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:searchQuery];
         [self.webView loadRequest:request];
+        
+    } else { // if no white spaces, treat as direct URL to website
+
+        NSURL *URL = [NSURL URLWithString:URLString];
+        
+        if (!URL.scheme) {
+            // The user didn't type http: or https:
+            URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", URLString]];
+        }
+        
+        if (URL) {
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+            [self.webView loadRequest:request];
+        }
+        
     }
     
     return NO;
@@ -172,6 +192,8 @@
     
     self.backButton.enabled = [self.webView canGoBack];
     self.forwardButton.enabled = [self.webView canGoForward];
+    self.stopButton.enabled = self.webView.isLoading;
+    self.reloadButton.enabled = !self.webView.isLoading;
 }
 
 @end
