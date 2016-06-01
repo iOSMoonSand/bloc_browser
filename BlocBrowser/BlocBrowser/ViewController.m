@@ -101,6 +101,12 @@
     }
 }
 
+- (void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPinchWithTransform:(CGAffineTransform)transform {
+    
+    toolbar.transform = CGAffineTransformScale(toolbar.transform, toolbar.scale, toolbar.scale);
+    toolbar.scale = 1;
+}
+
 #pragma mark - UITextFieldDelegate
 #pragma mark
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

@@ -16,6 +16,7 @@
 @property (nonatomic, weak) UILabel *currentLabel;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, strong) UIPinchGestureRecognizer *pinchGesture;
 
 @end
 
@@ -65,8 +66,12 @@
         self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFired:)];
         // #2
         [self addGestureRecognizer:self.tapGesture];
+        
         self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panFired:)];
         [self addGestureRecognizer:self.panGesture];
+        
+        self.pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchFired:)];
+        [self addGestureRecognizer:self.pinchGesture];
     }
     
     return self;
@@ -96,6 +101,20 @@
         }
         
         [recognizer setTranslation:CGPointZero inView:self];
+    }
+}
+
+- (void) pinchFired:(UIPinchGestureRecognizer *) recognizer {
+
+    if (recognizer.state == UIGestureRecognizerStateChanged) {
+        
+        CGAffineTransform transform;
+        
+        NSLog(@"New scale from transform: %@", NSStringFromCGAffineTransform(transform));
+        
+        if ([self.delegate respondsToSelector:@selector(floatingToolbar:didTryToPinchWithTransform:)]) {
+            [self.delegate floatingToolbar:self didTryToPinchWithTransform:transform];
+        }
     }
 }
 
